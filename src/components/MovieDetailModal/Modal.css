@@ -1,0 +1,122 @@
+/* Overlay Background untuk Modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    transition: opacity 0.3s ease;
+}
+
+/* Konten Utama Modal */
+.modal-content {
+    position: relative;
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 400px; /* Lebar maksimum lebih kecil */
+    width: 90%;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
+    animation: slideIn 0.3s ease-out;
+}
+
+/* Close Button untuk Modal */
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 1.5rem;
+    color: #333;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.modal-close:hover {
+    color: #e74c3c;
+}
+
+/* Konten di dalam Modal */
+.modal-body {
+    text-align: center;
+}
+
+.modal-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 15px;
+}
+
+.modal-img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.modal-description {
+    font-size: 0.95rem;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.modal-rating, .modal-year {
+    font-size: 1rem;
+    color: #333;
+}
+
+.modal-imdb-link {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 8px 16px;
+    background: #e74c3c;
+    color: #fff;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: background 0.3s ease;
+}
+
+.modal-imdb-link:hover {
+    background: #c0392b;
+}
+
+/* Responsif */
+@media (max-width: 768px) {
+    .modal-content {
+        width: 100%;
+        padding: 15px;
+        max-width: 90%; /* Lebar maksimum lebih kecil pada perangkat kecil */
+    }
+
+    .modal-title {
+        font-size: 1.3rem;
+    }
+
+    .modal-description {
+        font-size: 0.9rem;
+    }
+
+    .modal-rating, .modal-year {
+        font-size: 0.95rem;
+    }
+}
+
+/* Animasi Slide-in Modal */
+@keyframes slideIn {
+    from {
+        transform: translateY(-30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

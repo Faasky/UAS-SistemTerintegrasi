@@ -1,0 +1,102 @@
+.modal-wrapper {
+    position: fixed;           /* Fixed position for the modal */
+    top: 0;                   /* Aligns the modal at the top */
+    left: 0;                  /* Aligns the modal at the left */
+    width: 100vw;             /* Full width */
+    height: 100vh;            /* Full height */
+    display: flex;            /* Flexbox for centering */
+    justify-content: center;  /* Center horizontally */
+    align-items: center;      /* Center vertically */
+    z-index: 1000;            /* High z-index to overlay above content */
+}
+
+.modal-bg {
+    position: absolute;        /* Background overlay */
+    top: 0;
+    left: 0;
+    width: 100%;              /* Full width */
+    height: 100%;             /* Full height */
+    background: rgba(0, 0, 0, 0.8); /* Darker semi-transparent background */
+}
+
+.modal {
+    position: relative;        /* Relative positioning for the modal */
+    background: #1c1c1c;      /* Dark background for the modal */
+    border-radius: 8px;       /* Rounded corners */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Soft shadow for depth */
+    overflow: hidden;         /* Hide overflow */
+    max-width: 400px;         /* Maximum width for the modal */
+    width: 90%;               /* Responsive width */
+    animation: fadeIn 0.3s;   /* Fade-in animation */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.modal-close {
+    position: absolute;        /* Positioning for close button */
+    top: 15px;                /* Top spacing */
+    right: 15px;              /* Right spacing */
+    background: none;         /* No background */
+    border: none;             /* No border */
+    color: #fff;              /* White color for the close button */
+    font-size: 20px;          /* Font size */
+    cursor: pointer;          /* Pointer cursor */
+    transition: color 0.2s;   /* Smooth transition */
+}
+
+.modal-close:hover {
+    color: #ff5252;           /* Change color on hover */
+}
+
+.modal-content {
+    padding: 15px;            /* Padding for content */
+    color: white;             /* White text color */
+}
+
+.modal-image {
+    text-align: center;       /* Center align the image */
+    margin-bottom: 10px;      /* Margin below the image */
+}
+
+.modal-image img {
+    max-width: 100%;          /* Responsive image */
+    border-radius: 4px;      /* Slightly rounded corners for images */
+}
+
+.modal-title {
+    font-size: 1.4em;         /* Larger title font size */
+    margin: 10px 0;          /* Margin around the title */
+    font-weight: bold;        /* Bold font for the title */
+}
+
+.modal-info {
+    margin: 10px 0;          /* Margin for the info section */
+    line-height: 1.5;        /* Increased line height for readability */
+    color:#1c1c1c
+}
+
+.modal-buttons {
+    display: flex;            /* Flexbox for buttons */
+    justify-content: space-between; /* Space between buttons */
+    margin-top: 15px;        /* Top margin for spacing */
+}
+
+.modal-close-btn, .modal-book-btn {
+    background-color: #ff4081; /* Pink background for buttons */
+    border: none;              /* No border */
+    border-radius: 5px;       /* Rounded corners */
+    padding: 8px 12px;        /* Padding */
+    color: white;             /* White text color */
+    font-size: 0.9em;         /* Font size */
+    cursor: pointer;          /* Pointer cursor */
+    transition: background-color 0.3s, transform 0.2s; /* Smooth transitions */
+}
+
+.modal-close-btn:hover, .modal-book-btn:hover {
+    background-color: #ff79b0; /* Lighter pink on hover */
+    transform: scale(1.05);    /* Slight scaling on hover */
+}
+

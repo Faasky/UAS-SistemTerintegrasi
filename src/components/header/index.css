@@ -1,0 +1,26 @@
+header {
+    background-color: #282c34; /* Dark background color */
+    color: white;              /* White text color */
+    padding: 20px;            /* Padding for spacing */
+    text-align: center;       /* Center text */
+}
+
+.nav-list {
+    list-style-type: none;    /* Remove bullets from list */
+    padding: 0;               /* Remove default padding */
+}
+
+.nav-list li {
+    display: inline;          /* Inline list items */
+    margin: 0 15px;          /* Space between items */
+}
+
+.nav-list li a {
+    color: white;             /* White text for links */
+    text-decoration: none;    /* Remove underline from links */
+    font-weight: bold;        /* Bold text */
+}
+
+.nav-list li a:hover {
+    text-decoration: underline; /* Underline on hover */
+}

@@ -70,3 +70,56 @@ self.addEventListener('message', (event) => {
 });
 
 // Any other custom service worker logic can go here.
+
+// Install the service worker and cache all required files
+self.addEventListener('install', (event) => {
+  event.waitUntil(
+      caches.open(CACHE_NAME).then((cache) => {
+          return cache.addAll(FILES_TO_CACHE);
+      })
+  );
+  self.skipWaiting();
+});
+
+// Activate the service worker and clean up old caches
+self.addEventListener('activate', (event) => {
+  event.waitUntil(
+      caches.keys().then((cacheNames) => {
+          return Promise.all(
+              cacheNames.map((cache) => {
+                  if (cache !== CACHE_NAME && cache !== DATA_CACHE_NAME) {
+                      return caches.delete(cache);
+                  }
+              })
+          );
+      })
+  );
+  self.clients.claim();
+});
+
+// Fetch requests - try to return cached files, otherwise fetch from network
+self.addEventListener('fetch', (event) => {
+  // Only intercept GET requests
+  if (event.request.method !== 'GET') return;
+
+  // Check if the request is for the data (e.g., last search data)
+  if (event.request.url.includes('auto-complete')) {
+      event.respondWith(
+          caches.open(DATA_CACHE_NAME).then((cache) => {
+              return fetch(event.request)
+                  .then((response) => {
+                      cache.put(event.request.url, response.clone());
+                      return response;
+                  })
+                  .catch(() => caches.match(event.request));
+          })
+      );
+  } else {
+      // Otherwise, serve files from the cache first, then network
+      event.respondWith(
+          caches.match(event.request).then((response) => {
+              return response || fetch(event.request);
+          })
+      );
+  }
+});

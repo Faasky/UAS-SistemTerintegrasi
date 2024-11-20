@@ -1,26 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+// App.js
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
+// Pages
+import WelcomePage from "./pages/WelcomePage";
+import LandingPage from "./pages/LandingPage";
+import BookingPage from "./pages/BookingPage";
+import MyBooking from "./pages/MyBooking"; // Import MyBooking
+import InfoPage from "./pages/InfoPage";
+import Top from "./pages/Top";
+
+// Components
+import Header from "./components/header";
+import Navbar from "./components/navbar"; // Import Navbar
+
+import "./App.css";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <Router>
+            <div className="App">
+                <Header />
+                <Navbar /> {/* Add Navbar here */}
+                
+                <Routes>
+                    <Route path="/" element={<WelcomePage />} />
+                    <Route path="/landing" element={<LandingPage />} />
+                    <Route path="/booking" element={<BookingPage />} />
+                    <Route path="/mybooking" element={<MyBooking />} />
+                    <Route path="/info" element={<InfoPage />} />
+                    <Route path="/top" element={<Top />} />
+                </Routes>
+            </div>
+        </Router>
+    );
 }
 
 export default App;
